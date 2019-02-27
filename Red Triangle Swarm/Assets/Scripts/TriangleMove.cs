@@ -9,11 +9,14 @@ public class TriangleMove : MonoBehaviour {
     
 	void Start () {
         player = GameObject.FindGameObjectWithTag("Player");
-        speed = 1f;
+        speed = Random.Range(1f,3f);
 	}
 	
 	void Update () {
-        transform.forward = new Vector3(player.transform.position.x, player.transform.position.y, player.transform.position.z);
-        transform.position = Vector3.MoveTowards(transform.position, player.transform.position, speed * Time.deltaTime);
-	}
+        if (player != null)
+        {
+            transform.forward = player.transform.position;
+            transform.position = Vector3.MoveTowards(transform.position, player.transform.position, speed * Time.deltaTime);
+        }
+	}    
 }
