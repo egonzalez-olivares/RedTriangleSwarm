@@ -16,7 +16,6 @@ public class TriangleMove : MonoBehaviour {
         if (player != null)
         {
             transform.forward = player.transform.position;
-
             transform.position = Vector3.MoveTowards(transform.position, player.transform.position, speed * Time.deltaTime);
         }
 	}    
