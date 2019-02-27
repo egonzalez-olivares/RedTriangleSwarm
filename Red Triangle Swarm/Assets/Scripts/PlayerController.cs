@@ -7,6 +7,7 @@ public class PlayerController : MonoBehaviour {
 
     public float speed;
     public Text endGameText;
+    private GameManager gameManager;
 
     private Rigidbody rb;
 
@@ -14,6 +15,16 @@ public class PlayerController : MonoBehaviour {
 	void Start () {
         rb = GetComponent<Rigidbody>();
         endGameText.text = "";
+
+        GameObject gameManagerObject = GameObject.FindWithTag("GameController");
+        if(gameManagerObject != null)
+        {
+            gameManager = gameManagerObject.GetComponent<GameManager>();
+        }
+        else
+        {
+            Debug.Log("Cannot find 'GameManager' script");
+        }
 	}
 	
 	// Update is called once per frame
@@ -30,7 +41,8 @@ public class PlayerController : MonoBehaviour {
     {
         if (other.tag == "Goal")
         {
-            endGameText.text = "You Win!";
+            gameManager.WinGame();
+
         }
     }
 
@@ -39,7 +51,7 @@ public class PlayerController : MonoBehaviour {
         if(collision.gameObject.tag == "Enemy")
         {
             Destroy(gameObject);
-            endGameText.text = "You Lose!";
+            gameManager.LoseGame();
         }
     }
 }
