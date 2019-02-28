@@ -5,6 +5,7 @@ using UnityEngine;
 public class Spawner : MonoBehaviour {
 
     public GameObject triangle;
+    public int maxTriangles;
     private float floatSecs;
     private int intSecs;
     private int numOfTriangles;
@@ -41,7 +42,7 @@ public class Spawner : MonoBehaviour {
         floatSecs += Time.deltaTime;
         intSecs = (int)floatSecs;
         
-        if (numOfTriangles == 10 || gameManager.gameOver)
+        if (numOfTriangles == maxTriangles || gameManager.gameOver)
         {
             CancelInvoke();
         }

@@ -9,7 +9,7 @@ public class TriangleMove : MonoBehaviour {
     
 	void Start () {
         player = GameObject.FindGameObjectWithTag("Player");
-        speed = Random.Range(1f,3f);
+        speed = Random.Range(1f,2f);
 	}
 	
 	void Update () {
